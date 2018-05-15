@@ -1,0 +1,13 @@
+---
+- name: install nodejs
+  apt:
+    name: nodejs
+    state: present
+
+- name: install npm
+  apt:
+    name: npm
+    state: present
+
+- name: update npm
+  shell: "npm i npm"
