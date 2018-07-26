@@ -15,13 +15,12 @@
   shell: "npm i npm"
 
 - name: create folder for npm globals
-  shell: "mkdir /home/vagrant/.npm-global"
+  shell: "mkdir /home/{{ ansible_user }}/.npm-global"
 
 - name: set npm prefix
-  shell: "npm config set prefix '/home/vagrant/.npm-global'"
+  shell: "npm config set prefix '/home/{{ ansible_user }}/.npm-global'"
 
 - name: export Path with new npm globals dir
-  shell: "export PATH=/home/vagrant/.npm-global/bin:$PATH"
-
-- name: source profile
-  shell: ". /home/vagrant/.profile"
+  copy:
+    dest: /etc/profile.d/custom-path.sh
+    content: 'PATH=$PATH:/home/{{ ansible_user }}/.npm-global/bin'
