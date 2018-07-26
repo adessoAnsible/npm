@@ -14,5 +14,14 @@
 - name: update npm
   shell: "npm i npm"
 
-- name: set install path
-  command: "mkdir ~/.npm-global && npm config set prefix '~/.npm-global' && export PATH=~/.npm-global/bin:$PATH && source ~/.profile"
+- name: create folder for npm globals
+  shell: "mkdir /home/vagrant/.npm-global"
+
+- name: set npm prefix
+  shell: "npm config set prefix '/home/vagrant/.npm-global'"
+
+- name: export Path with new npm globals dir
+  shell: "export PATH=/home/vagrant/.npm-global/bin:$PATH"
+
+- name: source profile
+  shell: ". /home/vagrant/.profile"
