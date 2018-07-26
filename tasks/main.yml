@@ -15,4 +15,4 @@
   shell: "npm i npm"
 
 - name: set install path
-  shell: "mkdir ~/.npm-global && npm config set prefix '~/.npm-global' && export PATH=~/.npm-global/bin:$PATH && source ~/.profile"
+  command: "mkdir ~/.npm-global && npm config set prefix '~/.npm-global' && export PATH=~/.npm-global/bin:$PATH && source ~/.profile"
