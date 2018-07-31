@@ -20,7 +20,8 @@
 - name: set npm prefix
   shell: "npm config set prefix '/home/{{ ansible_user }}/.npm-global'"
 
-- name: export Path with new npm globals dir
+- name: export path with new npm globals dir
   copy:
-    dest: /etc/profile.d/custom-path.sh
+    dest: /etc/profile.d/npm-path.sh
     content: 'PATH=$PATH:/home/{{ ansible_user }}/.npm-global/bin'
+  become: yes
